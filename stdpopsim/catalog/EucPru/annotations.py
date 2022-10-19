@@ -17,7 +17,7 @@ _an = stdpopsim.Annotation(
         "https://github.com/nspope/eucpru-popsim-data/raw/"
         "main/data/eucera_pruinosa.annotation.tar.gz"
     ),
-    intervals_sha256="28e10dac3984d9a1266a878e5e4886964cb63dbd0ad47d0687aa460b59b1df6c",
+    intervals_sha256="bb4d28beacbe9491490854893feddfa750cdd8058105e585ca464160b2c14730",
     citations=[],  # FILLME
     file_pattern="eucera_pruinosa.{id}.exons",
     annotation_source="FILLME",
@@ -35,12 +35,12 @@ _mask = stdpopsim.Annotation(
         "https://github.com/nspope/eucpru-popsim-data/raw/"
         "main/data/eucera_pruinosa.mask.tar.gz"
     ),  # not a gff
-    gff_sha256="9eaa1caf91688a44be25ce7c27adcabecba51194ebfd041a8752bb227483d689",
+    gff_sha256="774e3c5503281052f6d47570bdcbdd3f1e57c271728b6ed8545ee2aee379d73b",
     intervals_url=(
         "https://github.com/nspope/eucpru-popsim-data/raw/"
         "main/data/eucera_pruinosa.mask.tar.gz"
     ),
-    intervals_sha256="9eaa1caf91688a44be25ce7c27adcabecba51194ebfd041a8752bb227483d689",
+    intervals_sha256="774e3c5503281052f6d47570bdcbdd3f1e57c271728b6ed8545ee2aee379d73b",
     citations=[],  # FILLME
     file_pattern="eucera_pruinosa.{id}.mask",
     annotation_source="FILLME",
