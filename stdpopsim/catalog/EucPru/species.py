@@ -30,12 +30,12 @@ _recombination_rate_data = {
 
 # Mutation rates
 _autosomal_mu = 1.26e-9
-_mutation_rate_data = {k: _autosomal_mu for k in genome_data.data}
+_mutation_rate_data = {k: _autosomal_mu for k in _recombination_rate_data.keys()}
 
 # Generic and chromosome-specific ploidy
 # Species is haplodiploid, but stdpopsim doesn't support that
 _species_ploidy = 2
-_ploidy = {k: _species_ploidy for k in genome_data.data}
+_ploidy = {k: _species_ploidy for k in _recombination_rate_data.keys()}
 
 _genome = stdpopsim.Genome.from_data(
     genome_data.data,
