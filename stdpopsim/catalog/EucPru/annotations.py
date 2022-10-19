@@ -19,7 +19,7 @@ _an = stdpopsim.Annotation(
     ),
     intervals_sha256="28e10dac3984d9a1266a878e5e4886964cb63dbd0ad47d0687aa460b59b1df6c",
     citations=[],  # FILLME
-    file_pattern="annotations/eucera_pruinosa.{id}.exons.bed",
+    file_pattern="eucera_pruinosa.{id}.exons.bed",
     annotation_source="FILLME",
     annotation_type="exon",
 )
@@ -42,7 +42,7 @@ _mask = stdpopsim.Annotation(
     ),
     intervals_sha256="9eaa1caf91688a44be25ce7c27adcabecba51194ebfd041a8752bb227483d689",
     citations=[],  # FILLME
-    file_pattern="annotations/eucera_pruinosa.{id}.mask.bed",
+    file_pattern="eucera_pruinosa.{id}.mask.bed",
     annotation_source="FILLME",
     annotation_type="missing_data",
 )
