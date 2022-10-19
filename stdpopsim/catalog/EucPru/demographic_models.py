@@ -5,7 +5,7 @@ import stdpopsim
 _species = stdpopsim.get_species("EucPru")
 
 
-class _GenomeWide:
+def _genome_wide():
     _demographic_parameters = np.array(
         [
             [
@@ -3298,8 +3298,8 @@ class _GenomeWide:
                         )
                     )
 
-    _model = stdpopsim.DemographicModel(
-        id="NAExpansionGenomewide_4P23",
+    return stdpopsim.DemographicModel(
+        id="NAExpansion_4P23",
         description="Expansion across North America inferred using"
         "genome-wide genealogies",
         long_description="""
@@ -3317,4 +3317,4 @@ class _GenomeWide:
     )
 
 
-_species.add_demographic_model(_GenomeWide._model)
+_species.add_demographic_model(_genome_wide())
