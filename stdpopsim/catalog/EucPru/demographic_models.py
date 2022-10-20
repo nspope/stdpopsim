@@ -3280,6 +3280,7 @@ def _genome_wide():
         ),
     ]
 
+    # _mergers = { time : (source, dest) }
     _epoch_start = np.linspace(0, 125000, 125)
     _demographic_events = []
     for pars, t in zip(_demographic_parameters, _epoch_start):
@@ -3297,6 +3298,7 @@ def _genome_wide():
                             time=t, rate=pars[i, j], matrix_index=(i, j)
                         )
                     )
+    # sort demographic events
 
     return stdpopsim.DemographicModel(
         id="NAExpansion_4P23",
