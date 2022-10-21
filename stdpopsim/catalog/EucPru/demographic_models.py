@@ -6,7 +6,7 @@ _species = stdpopsim.get_species("EucPru")
 
 
 def _genome_wide():
-    _demographic_parameters = np.array(
+    _parameters = np.array(
         [
             [
                 [
@@ -3271,7 +3271,7 @@ def _genome_wide():
             description="Eucera pruinosa population from Monterose, Colorado",
         ),
         stdpopsim.Population(
-            id="MX",
+            id="MEX",
             description="Eucera pruinosa population from Puebla, Mexico",
         ),
         stdpopsim.Population(
@@ -3280,25 +3280,38 @@ def _genome_wide():
         ),
     ]
 
-    # _mergers = { time : (source, dest) }
-    _epoch_start = np.linspace(0, 125000, 125)
+    _epoch_start = np.linspace(0, 124000, 125)
+
+    _population_map = np.repeat(np.arange(4, dtype=int), 125).reshape(4,125)
+    _population_map[1,9:] = 0 # CO->AZ
+    _population_map[3,35:] = 0 # PA->AZ
+    _population_map[0,60:] = 2 # AZ->MEX
+    _population_map = _population_map.T
     _demographic_events = []
-    for pars, t in zip(_demographic_parameters, _epoch_start):
-        for i in range(len(_populations)):
-            for j in range(len(_populations)):
-                if i == j:
-                    _demographic_events.append(
-                        msprime.PopulationParametersChange(
-                            time=t, initial_size=int(pars[i, i]), population_id=i
+    for pars, t, pmap in zip(_parameters, _epoch_start, _population_map):
+        for i in range(pars.shape[0]):
+            for j in range(pars.shape[1]):
+                if pmap[i] == i and pmap[j] == j:
+                    if i == j:
+                        if pars[i, i] > 0:
+                            _demographic_events.append(
+                                msprime.PopulationParametersChange(
+                                    time=t, initial_size=int(pars[i, i]), population_id=i
+                                )
+                            )
+                    else:
+                        _demographic_events.append(
+                            msprime.MigrationRateChange(
+                                time=t, rate=pars[i, j], matrix_index=(i, j)
+                            )
                         )
-                    )
-                else:
-                    _demographic_events.append(
-                        msprime.MigrationRateChange(
-                            time=t, rate=pars[i, j], matrix_index=(i, j)
-                        )
-                    )
-    # sort demographic events
+
+    _mergers = { 60000 : (0, 2), 9000 : (1, 0), 35000 : (3, 0) }
+    for time, pair in _mergers.items():
+        _demographic_events.append(
+            msprime.MassMigration(time=time, source=pair[0], dest=pair[1])
+        )
+    _demographic_events = sorted(_demographic_events, key=lambda x: x.time)
 
     return stdpopsim.DemographicModel(
         id="NAExpansion_4P23",
