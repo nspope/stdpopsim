@@ -3293,16 +3293,22 @@ def _genome_wide():
             for j in range(pars.shape[1]):
                 if pmap[i] == i and pmap[j] == j:
                     if i == j:
-                        if pars[i, i] > 0:
-                            _demographic_events.append(
-                                msprime.PopulationParametersChange(
-                                    time=t, initial_size=int(pars[i, i]), population_id=i
-                                )
+                        _demographic_events.append(
+                            msprime.PopulationParametersChange(
+                                time=t, initial_size=int(pars[i, i]), population_id=i
                             )
+                        )
                     else:
                         _demographic_events.append(
                             msprime.MigrationRateChange(
                                 time=t, rate=pars[i, j], matrix_index=(i, j)
+                            )
+                        )
+                else:
+                    if i != j:
+                        _demographic_events.append(
+                            msprime.MigrationRateChange(
+                                time=t, rate=0.0, matrix_index=(i, j)
                             )
                         )
 
