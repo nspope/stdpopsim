@@ -34,7 +34,8 @@ _mutation_rate_data = {k: _autosomal_mu for k in _recombination_rate_data.keys()
 
 # Generic and chromosome-specific ploidy
 # Species is haplodiploid, but stdpopsim doesn't support that
-_species_ploidy = 2
+# As males were sequenced for model fitting, use haploids
+_species_ploidy = 1
 _ploidy = {k: _species_ploidy for k in _recombination_rate_data.keys()}
 
 _genome = stdpopsim.Genome.from_data(
