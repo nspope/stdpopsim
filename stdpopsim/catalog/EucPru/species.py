@@ -29,7 +29,7 @@ _recombination_rate_data = {
 }
 
 # Mutation rates
-_autosomal_mu = 3.6e-9
+_autosomal_mu = 6.02e-9
 _mutation_rate_data = {k: _autosomal_mu for k in _recombination_rate_data.keys()}
 
 # Generic and chromosome-specific ploidy

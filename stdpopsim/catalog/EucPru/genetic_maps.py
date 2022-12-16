@@ -5,14 +5,14 @@ _species = stdpopsim.get_species("EucPru")
 _gm = stdpopsim.GeneticMap(
     species=_species,
     id="Pope_PSUv1",
-    description="Genetic map inferred with twelve haploid bees from Colorado",
+    description="Genetic map inferred by pyrho with eight haploid bees from Puebla, Mexico",
     long_description="""
     FILLME
     """,
-    url="https://github.com/nspope/eucpru-popsim-data/raw/"
-    "main/data/eucera_pruinosa.genetic_map.tar.gz",
-    sha256="f7e50c9040f0a90a8138b473df30a04f6015874bd9227b4d5d36b54b0ce3e017",
-    file_pattern="eucera_pruinosa.{id}.hapmap.txt",
+    url="https://sesame.uoregon.edu/~natep/eucpru-data/hapmap/"
+    "eucera_pruinosa.pyrho.hapmap.tar.gz",
+    sha256="807d3a5ea13909a7dd9cbf815dfeae9aee15c6fc9d95c5a1b031b936998c64b4",
+    file_pattern="{id}.MEX.hapmap",
     citations=[
         stdpopsim.Citation(
             author="FILLME",
